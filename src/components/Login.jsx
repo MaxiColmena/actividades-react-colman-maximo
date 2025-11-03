@@ -1,11 +1,12 @@
-import React from 'react'
+export const Login = () => {
 
-const Login = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+     <form>
+      <label>Email</label>
+      <input ></input>
+      </form> 
+    </>
   )
 }
 
-export default Login

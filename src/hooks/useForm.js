@@ -1,13 +1,17 @@
 
 const useForm = (initialValue) => {
-  const [values, setValues] = useState(initialValue)
+  const [form, setForm] = useState(initialValue)
+    const handleChange = () => {
+
+    }
   
-  
-  
-    return (
-    <div>
+    const handleReset = () => {
       
-    </div>
+    }
+    return (
+    <>
+      
+    </>
   )
 }
 

@@ -1,24 +1,35 @@
-export const getFetch = async (c) => {
-    try {
-     
+import { useEffect, useState } from "react";
 
-      
-        const url = `https://thesimpsonsapi.com/api/characters/${count}`;
+export const useFetch = (url) => {
 
-      const resp = await fetch(url);
-      const data = await resp.json();
+    const [state, setState] = useState({data: null, isLoading: true})
+    const { data, isLoading } = state
 
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+    const getFetch = async() => {
+      try {
+        setState({...state, isLoading: true})
 
-      setState({
-        data: data,
-        isLoading: false,
-      });
-    } catch (error) {
-      console.log("Error al obtener los personajes", error);
+
+        const url = url
+        const resp = await fetch(url);
+        const data = await resp.json();
+  
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+  
+        setState({
+          data: data,
+          isLoading: false,
+        });
+
+
+      } catch (error) {
+        console.log("Error al obtener los personajes", error);
+      }
     }
+
+    useEffect(()=>{getFetch()}, [url] )
+
     return {
-
-
+      data, isLoading
     }
   };

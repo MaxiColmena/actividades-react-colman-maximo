@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useState } from "react";
 // import { useCounter } from "../hooks/useCounter";
-import { useFetch } from "../hooks/useFetch";
+// import { useFetch } from "../hooks/useFetch";
 
 export const MultipleCustomHooks = () => {
 
-    const { getFetch } = useFetch(url, setState);
+    // const { getFetch } = useFetch(url, setState);
     const url = `https://thesimpsonsapi.com/api/characters/${count}`;
 
   const [state, setState] = useState({
