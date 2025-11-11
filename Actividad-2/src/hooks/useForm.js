@@ -1,18 +1,23 @@
-
-const useForm = (initialValue) => {
+  import { useState } from "react"
+export const useForm = (initialValue) => {
   const [form, setForm] = useState(initialValue)
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+e.preventDefault();
+      const { name, value } = e.target;
+      setForm({
+        ...form,
+        [name]: value
+      })
     }
   
     const handleReset = () => {
       
     }
-    return (
-    <>
-      
-    </>
-  )
+    return {
+      form,
+      handleChange,
+      handleReset
+    }
 }
 
-export default useForm
+
