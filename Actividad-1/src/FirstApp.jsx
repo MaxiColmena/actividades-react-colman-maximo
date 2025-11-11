@@ -1,7 +1,7 @@
 export const FirstApp = () => {
   return (
     <>
-    <h1>Hola desde el FirstApp</h1>
+      <h1>Hola mundo, enviado desde el FirstApp</h1>
     </>
   )
-};
+}
