@@ -11,7 +11,7 @@ e.preventDefault();
     }
   
     const handleReset = () => {
-      
+      setForm(initialValue)
     }
     return {
       form,

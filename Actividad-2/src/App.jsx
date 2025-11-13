@@ -1,24 +1,32 @@
-import { useState } from "react"
-import { Login } from "./components/Login"
-import { Register } from "./components/Register"
+import { useState } from "react";
+import { Login } from "./components/Login";
+import { Register } from "./components/Register";
 
 export const App = () => {
-
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState("");
 
   const handleLogin = (username) => {
-    setUser(username)
-  }
+    setUser(username);
+  };
 
   const handleLogout = () => {
-    setUser('')
-  }
+    setUser("");
+  };
+
   return (
     <>
-      <h1>¡Hola de nuevo {user}!</h1>
-      <Register />
-      <Login onLogin={handleLogin} />
-      <button onClick={handleLogout}>Logout</button>
+      {user ? (
+        <div>
+          <h1> Hola de Nuevo {user} </h1>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      ) : (
+        <div>
+          <Login onLogin={handleLogin} />
+          <hr />
+          <Register />
+        </div>
+      )}
     </>
-  )
-}
+  );
+};

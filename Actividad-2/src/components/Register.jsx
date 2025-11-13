@@ -10,21 +10,26 @@ export const Register = () => {
         firstname: '',
         lastname: ''
     })
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(form);
+        handleReset();
+    }
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <input type="text" name="username" value={form.username} onChange={handleChange} placeholder="username"/>
             <br></br>
-            <input type="text" name="email" value={form.email} onChange={handleChange} placeholder="email"/>
+            <input type="email" name="email" value={form.email} onChange={handleChange} placeholder="email"/>
             <br></br>
-            <input type="text" name="password" value={form.password} onChange={handleChange} placeholder="password"/>
+            <input type="password" name="password" value={form.password} onChange={handleChange} placeholder="password"/>
             <br></br>
             <input type="text" name="firstname" value={form.firstname} onChange={handleChange} placeholder="firstname"/>
             <br></br>
             <input type="text" name="lastname" value={form.lastname} onChange={handleChange} placeholder="lastname"/>
             <br></br>
-            <button onClick={() => console.log(form)} type="button">Registrarse</button>
-            <br></br>
-            <button onClick={handleReset} type="button">Reset</button>
+            <button type="submit">Registrarse</button>
             <br></br>
         </form>
     )

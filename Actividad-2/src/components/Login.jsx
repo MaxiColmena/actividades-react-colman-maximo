@@ -2,25 +2,25 @@ import { useForm } from "../hooks/useForm.js"
 
 export const Login = ({ onLogin }) => {
 
+    const { form, handleChange, handleReset } = useForm({
+        email: '',
+        password: ''
+    })
+
     const handleSubmit = (e) => {
         //* Prevenir que se recargue la pagina
         e.preventDefault();
-        onLogin(Form.username)
+        onLogin(form.email)
         handleReset();
     }
 
-    const { form, handleChange, handleReset } = useForm({
-        username: '',
-        email: ''
-    })
-
     return (
-        <form>
-            <input type="text" name="username" value={form.username} onChange={handleChange} /> 
+        <form onSubmit={handleSubmit}>
+            <input type="email" name="email" value={form.email} onChange={handleChange} placeholder="email"/> 
             <br></br>
-            <input type="text" name="email" value={form.email} onChange={handleChange} />
+            <input type="password" name="password" value={form.password} onChange={handleChange} placeholder="password"/>
             <br></br>
-            <button onClick={handleSubmit}> Login </button>
+            <button type="submit"> Login </button>
             <br></br>
         </form>
     )
