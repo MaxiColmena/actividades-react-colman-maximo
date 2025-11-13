@@ -1,35 +1,35 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 export const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const [state, setState] = useState({data: null, isLoading: true})
-    const { data, isLoading } = state
+  useEffect(() => {
 
-    const getFetch = async() => {
-      try {
-        setState({...state, isLoading: true})
+    setIsLoading(true);
+    setError(null);
 
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error al obtener los datos");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setData(data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setIsLoading(false);
+      });
+  }, [url]);
 
-        const url = url
-        const resp = await fetch(url);
-        const data = await resp.json();
-  
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-  
-        setState({
-          data: data,
-          isLoading: false,
-        });
-
-
-      } catch (error) {
-        console.log("Error al obtener los personajes", error);
-      }
-    }
-
-    useEffect(()=>{getFetch()}, [url] )
-
-    return {
-      data, isLoading
-    }
+  return {
+    data,
+    isLoading,
+    error,
   };
+};

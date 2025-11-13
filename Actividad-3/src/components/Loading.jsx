@@ -1,11 +1,12 @@
-import React from 'react'
 
-const Loading = () => {
+export const Loading = () => {
+
   return (
-    <div>
-      
+    <>
+    <div className="Container-load">
+        <div className="spinner"></div>
+        <p>Cargando Personajes...</p>
     </div>
+    </>
   )
-}
-
-export default Loading
+};
